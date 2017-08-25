@@ -69,13 +69,13 @@ app.post('/articles', function(request, response) {
       articles(author_id, title, category, "publishedOn", body)
       SELECT author_id, $1, $2, $3, $4
       FROM authors
-      WHERE author=$5;`, // TODO: Write a SQL query to insert the new article using the author_id from our previous query
+      WHERE author=$5;`, // DONE: Write a SQL query to insert the new article using the author_id from our previous query
       [ request.body.title,
         request.body.category,
         request.body.publishedOn,
         request.body.body,
         request.body.author
-      ], // TODO: Add the data from our new article, including the author_id, as data for the SQL query.
+      ], // DONE: Add the data from our new article, including the author_id, as data for the SQL query.
       function(err) {
         if (err) console.error(err);
         response.send('insert complete');
@@ -85,9 +85,9 @@ app.post('/articles', function(request, response) {
 });
 
 app.put('/articles/:id', function(request, response) {
-  // TODO: Write a SQL query to update an author record. Remember that our articles now have
+  // DONE: Write a SQL query to update an author record. Remember that our articles now have
   // an author_id property, so we can reference it from the request.body.
-  // TODO: Add the required values from the request as data for the SQL query to interpolate
+  // DONE: Add the required values from the request as data for the SQL query to interpolate
   client.query(
       `UPDATE authors
       SET
@@ -99,9 +99,9 @@ app.put('/articles/:id', function(request, response) {
     ]
     )
     .then(function() {
-      // TODO: Write a SQL query to update an article record. Keep in mind that article records
+      // DONE: Write a SQL query to update an article record. Keep in mind that article records
       // now have an author_id, in addition to title, category, publishedOn, and body.
-      // TODO: Add the required values from the request as data for the SQL query to interpolate
+      // DONE: Add the required values from the request as data for the SQL query to interpolate
       client.query(
         `UPDATE articles
           SET
